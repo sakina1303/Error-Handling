@@ -18,8 +18,8 @@ const writeData = async (data) => {
 
 export const getAllProducts = async (req, res, next) => {
   try {
-    // [To-Do 3] 👉 Read products from JSON file
-
+     const products = await readData();
+     res.json({ products });
   } catch (err) {
     next(err);
   }
@@ -27,14 +27,38 @@ export const getAllProducts = async (req, res, next) => {
 
 export const getProductById = async (req, res, next) => {
     // [To-Do 2] 👉 Fetch product by id successfully
+   try{
+    const id = parseInt(req.params.id, 10);
+    const products = await readData();
+    const product = products.find(p => p.id === id);
+    if (!product) {
+      return res.status(404).json({ error: 'Product not found' });
+    }
+
+    res.json(product);
+  }
     // [To-Do 5] 👉 Handle product not found scenario and get Product by Id
+  catch(err){
+    next(err);
+  }
 
 };
 
 export const addProduct = async (req, res, next) => {
   try {
     // [To-Do 1] 👉 Create product successfully
-    // [To-Do 4] 👉 Handle Invalid product data scenario and create a new product
+    const { name, price } = req.body;
+    if (!name || typeof price !== 'number') {
+      return res.status(400).json({ error: 'Invalid product data' });
+    }
+
+    const products = await readData();
+    const newId = products.length ? Math.max(...products.map(p => p.id)) + 1 : 1;
+    const newProduct = { id: newId, name, price };
+    products.push(newProduct);
+    await writeData(products);
+
+    res.status(201).json(newProduct);
 
   } catch (err) {
     next(err);
