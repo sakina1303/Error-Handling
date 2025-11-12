@@ -18,7 +18,7 @@ const writeData = async (data) => {
 
 export const getAllProducts = async (req, res, next) => {
   try {
-    // [To-Do 1] 👉 Read products from JSON file
+    // [To-Do 3] 👉 Read products from JSON file
 
   } catch (err) {
     next(err);
@@ -26,13 +26,15 @@ export const getAllProducts = async (req, res, next) => {
 };
 
 export const getProductById = async (req, res, next) => {
-  // [To-Do 3] 👉 Handle product not found scenario and get Product by Id
+    // [To-Do 2] 👉 Fetch product by id successfully
+    // [To-Do 5] 👉 Handle product not found scenario and get Product by Id
 
 };
 
 export const addProduct = async (req, res, next) => {
   try {
-    // [To-Do 2] 👉 Handle Invalid product data scenario and create a new product
+    // [To-Do 1] 👉 Create product successfully
+    // [To-Do 4] 👉 Handle Invalid product data scenario and create a new product
 
   } catch (err) {
     next(err);

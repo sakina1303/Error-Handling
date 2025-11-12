@@ -1,5 +1,5 @@
 const errorHandler = (err, req, res, next) => {
-  // [To-Do 5] 👉 Implement global error handling logic here
+  // [To-Do 7] 👉 Implement global error handling logic here
   
 };
 

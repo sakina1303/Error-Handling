@@ -8,7 +8,7 @@ app.use(express.json());
 
 app.use('/products', productRoutes);
 
-// [To-Do 4] 👉 Handle unknown routes here (404)
+// [To-Do 6] 👉 Handle unknown routes here (404)
 
 app.use(errorHandler);
 
